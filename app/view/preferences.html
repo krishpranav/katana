@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Katana</title>
+  <link rel="stylesheet" href="../static/css/preferences.css">
+  <link rel="stylesheet" href="../static/css/ionicons.min.css">
+  <link rel="stylesheet" href="../static/css/animate.css">
+</head>
+<body>
+  <app id="__preferences">
+    <button class="button-close close"></button>
+
+    <div id="loader" class="backdrop dark">
+      <div class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+      </div>
+    </div>
+
+    <div id="servicePrompt" class="backdrop">
+      <div class="content">
+        <p class="label">Upload Path</p>
+        <p class="sublabel">The pomf upload path, usually a php file located at the root of the domain.</p>
+
+        <input id="uploadPath" name="uploadPath" class="control" placeholder="https://domain.com/upload.php" />
+
+        <p class="label">Result URL</p>
+        <p class="sublabel">The result URL of your screenshot.</p>
+        
+        <input id="resultPath" name="resultPath" class="control" placeholder="https://a.domain.com" />
+
+        <div class="right">
+          <button class="button button-cancel close-prompt" name="cancel">Cancel</button> &nbsp;&nbsp; 
+          <button class="button button-save" name="save">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <ul>
+        <li id="#general" class="active"><i class="icon ion-ios-gear-outline"></i> General</li>
+        <li id="#shortcuts"><i class="icon ion-ios-settings"></i> Shortcuts</li>
+        <li id="#services"><i class="icon ion-ios-cloud-upload-outline"></i> Services</li>
+        <li id="#history"><i class="icon ion-ios-search"></i> History</li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div id="general" class="view">
+        <div class="content">
+          <h3>General</h3>
+
+          <div class="section">
+            <p class="title">Start at login</p>
+            <p class="subtitle">Launch Katana when your system starts up</p>
+
+            <label class="switch">
+              <input id="startAtLogin" type="checkbox">
+              <div class="slider round"></div>
+            </label>
+          </div>
+
+          <div class="section">
+            <p class="title">Delete on upload</p>
+            <p class="subtitle">Delete screenshot after upload is complete</p>
+
+            <label class="switch">
+              <input id="deleteOnUpload" type="checkbox">
+              <div class="slider round"></div>
+            </label>
+          </div>
+
+          <div class="section">
+            <p class="title">Show dock icon</p>
+            <p class="subtitle">Shows the Katana icon in your dock</p>
+
+            <label class="switch">
+              <input id="showIcon" type="checkbox">
+              <div class="slider round"></div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div id="shortcuts" class="view">
+        <div class="content">
+          <h3>Shortcuts</h3>
+          <div class="section">
+            <p class="title">Capture Screenshot</p>
+            <p class="subtitle">Capture and upload a screenshot</p>
+            <input id="screenshotSelection" class="control shortcutInput" value="None" readonly /> <i class="icon icon-spin ion-load-c hidden"></i>
+          </div>
+
+          <div class="section">
+            <p class="title">Shorten URL</p>
+            <p class="subtitle">Shorten any URL that is copied to your clipboard</p>
+            <input id="shortenUrl" class="control shortcutInput" value="None" readonly /> <i class="icon icon-spin ion-load-c hidden"></i>
+          </div>
+        </div>
+      </div>
+
+      <div id="services" class="view">
+        <div class="content">
+          <h3>Services</h3>
+
+          <div class="section">
+            <p class="title">Upload Service</p>
+            <p class="subtitle">The image host where your screenshot will be sent</p>
+
+            <select name="uploadService" class="control">
+              <option value="imgur">Imgur</option>
+
+              <optgroup label="Pomf">
+
+              </optgroup>
+
+              <option value="custom">Custom</option>
+            </select>
+          </div>
+
+          <div class="section">
+            <p class="title">URL Shortener</p>
+            <p class="subtitle">The URL shortener to use when shortening links</p>
+
+            <select name="shortenerService" class="control">
+              <option value="is.gd">is.gd</option>
+              <option value="v.gd">v.gd</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div id="history" class="view">
+        <div class="content">
+          <div class="history-container">
+            <ul></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </app>
+
+  <script>require('./preferences.js')</script>
+</body>
+</html>
