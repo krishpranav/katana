@@ -1,3 +1,5 @@
+// preferences
+
 window.$ = window.jQuery = require('../static/js/jquery.min.js')
 
 require('../static/js/mousetrap.min.js')
@@ -170,3 +172,39 @@ $('.shortcutInput').blur((event) => {
 
   $(shortcutInput).parent().find('.icon').hide().removeClass('spin')
 })
+
+function showPrompt(prompt) {
+    $(prompt).fadeIn(200)
+}
+
+function parseTime(str) {
+    const date = new Date(str * 1000)
+
+    return data.format('M jS \\a\\t g:ia')
+}
+
+function saveAndClose () {
+    ipc.send('saveOptions', optionsObj)
+  
+    remote.getCurrentWindow().close()
+}
+
+function parseCombo(combo) {
+    if (combo.includes('meta')) {
+        combo = combo.replace('meta', 'command')
+    }
+    return combo
+}
+
+function switchView (view, target) {
+    $('.sidebar li').each((key, val) => {
+      if ($(val).hasClass('active')) {
+        $(val).removeClass('active')
+      }
+    })
+  
+    if (target) $(target).addClass('active')
+  
+    $('.view').hide()
+    $(`#${view}`).show()
+}
